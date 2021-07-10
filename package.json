@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/laubernal/training-tracker/issues"
   },
-  "homepage": "https://github.com/laubernal/training-tracker#readme"
+  "homepage": "https://github.com/laubernal/training-tracker#readme",
+  "dependencies": {
+    "cookie-session": "^1.4.0",
+    "express": "^4.17.1"
+  }
 }
