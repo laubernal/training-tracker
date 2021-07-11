@@ -1,8 +1,9 @@
 const fs = require('fs');
+const crypto = require('crypto');
 
 const TRAINING_JSON = require('../constants');
 
-class TrainingRepository {
+class TrainingsRepository {
   constructor(filename) {
     if (!filename) {
       throw new Error('Creating a repository requires a filename');
@@ -23,6 +24,18 @@ class TrainingRepository {
   async writeAll(trainings) {
     await fs.promises.writeFile(this.filename, JSON.stringify(trainings, null, 2));
   }
+
+  async create(training) {
+    const trainings = await this.getAll();
+
+    trainings.push(training);
+
+    await this.writeAll(trainings);
+  }
+
+  randomId() {
+    return crypto.randomBytes(4).toString('hex');
+  }
 }
 
-module.exports = new TrainingRepository(TRAINING_JSON);
+module.exports = new TrainingsRepository(TRAINING_JSON);

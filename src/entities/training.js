@@ -7,3 +7,5 @@ class Training {
 }
 
 module.exports = Training;
+
+// const training = await trainingRepo.create(new Training(randomID(), date, [new Exercise(name, [new Series(reps, weight)])]));

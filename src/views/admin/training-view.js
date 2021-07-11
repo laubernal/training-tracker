@@ -1,12 +1,12 @@
 const layout = require('../layout');
-const { getErrors } = require('../helpers');
+const { getError } = require('../helpers');
 
-module.exports = ({ req, errors }) => {
+module.exports = ({ errors }) => {
   return layout({
     content: `
     <div>
         <input name="date" placeholder="Date" />
-        <input name="exName" placeholder="Exercise name" />
+        <input name="exerciseName" placeholder="Exercise name" />
         <input name="series" placeholder="Number of series" />
         ${getError(errors, 'series')}
         <input name="reps" placeholder="Reps" />
@@ -15,8 +15,7 @@ module.exports = ({ req, errors }) => {
         ${getError(errors, 'weight')}
         <button>Add series</button>
         <button>Submit</button>
-        <button>Add exercise</button>
-                
+        <button>Add exercise</button>                
     </div>
   `,
   });
