@@ -42,7 +42,17 @@ class UsersRepository {
     return users.find(user => user.id === id);
   }
 
-  //   async update() {}
+  async update(id, attrs) {
+    const users = await this.getAll();
+    const user = users.find(user => user.id === id);
+
+    if (!user) {
+      throw new Error(`User with id ${id} not found`);
+    }
+
+    Object.assign(user, attrs);
+    await this.writeAll(users);
+  }
 
   async delete(id) {
     const users = await this.getAll();
@@ -50,6 +60,24 @@ class UsersRepository {
 
     await this.writeAll(filteredUsers);
   }
+
+  async getOneBy(filters) {
+    const users = await this.getAll();
+
+    for (let user of users) {
+      let found = true;
+
+      for (let key in filters) {
+        if (user[key] != filters[key]) {
+          found = false;
+        }
+      }
+
+      if (found) {
+        return user;
+      }
+    }
+  }
 }
 
-module.exports = new UsersRepository(USER_JSON);
+module.exports = new UsersRepository('users.json');

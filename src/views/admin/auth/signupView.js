@@ -12,6 +12,7 @@ module.exports = ({ errors }) => {
             ${getError(errors, 'password')}
             <input name="passwordConfirmation" placeholder="Password Confirmation" />
             ${getError(errors, 'passwordConfirmation')}
+            <button>Submit</button>
         </form>
     </div>
     `,
