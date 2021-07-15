@@ -1,7 +1,7 @@
 const fs = require('fs');
 const crypto = require('crypto');
 
-const TRAINING_JSON = require('../constants');
+const { TRAINING_JSON } = require('../constants');
 
 class TrainingsRepository {
   constructor(filename) {

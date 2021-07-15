@@ -1,7 +1,10 @@
 const fs = require('fs');
 const crypto = require('crypto');
+const util = require('util');
 
-const USER_JSON = require('../constants');
+const scrypt = util.promisify(crypto.scrypt);
+
+const { USERS_JSON } = require('../constants');
 
 class UsersRepository {
   constructor(filename) {
@@ -25,12 +28,32 @@ class UsersRepository {
     await fs.promises.writeFile(this.filename, JSON.stringify(users, null, 2));
   }
 
+  async comparePasswords(saved, supplied) {
+    // saved -> password saved in our DB 'hashed.salt'
+    // supplied -> password supplied by the user when signin
+    const [hashed, salt] = saved.split('.');
+
+    const suppliedHashedBuf = await scrypt(supplied, salt, 64);
+
+    return hashed === suppliedHashedBuf.toString('hex');
+  }
+
   async create(user) {
+    const salt = crypto.randomBytes(8).toString('hex');
+    const buf = await scrypt(user.password, salt, 64);
+
     const users = await this.getAll();
 
-    users.push(user);
+    const userNew = {
+      ...user,
+      password: `${buf.toString('hex')}.${salt}`,
+    };
+
+    users.push(userNew);
 
     await this.writeAll(users);
+
+    return users;
   }
 
   randomId() {
@@ -80,4 +103,4 @@ class UsersRepository {
   }
 }
 
-module.exports = new UsersRepository('users.json');
+module.exports = new UsersRepository(USERS_JSON);
