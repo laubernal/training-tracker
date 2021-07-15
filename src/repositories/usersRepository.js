@@ -53,7 +53,7 @@ class UsersRepository {
 
     await this.writeAll(users);
 
-    return users;
+    return userNew;
   }
 
   randomId() {

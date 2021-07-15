@@ -10,7 +10,7 @@ const {
   requirePasswordConfirmation,
   requireEmailExists,
   requireValidPasswordForUser,
-} = require('./validators');
+} = require('./authValidators');
 const { handleErrors } = require('./middlewares');
 
 const router = express.Router();
