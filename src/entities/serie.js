@@ -1,5 +1,6 @@
 class Serie {
-  constructor(reps, weight) {
+  constructor(seriesNum, reps, weight) {
+    this.seriesNum = seriesNum;
     this.reps = reps;
     this.weight = weight;
   }

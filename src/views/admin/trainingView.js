@@ -5,6 +5,7 @@ module.exports = ({ errors }) => {
   return layout({
     content: `
     <div>
+        <button>Log out</button>
         <input name="date" placeholder="Date" />
         <input name="exerciseName" placeholder="Exercise name" />
         <input name="series" placeholder="Number of series" />
