@@ -7,9 +7,11 @@ module.exports = ({ errors }) => {
     <div>
         <button>Log out</button>
         <input name="date" placeholder="Date" />
+        ${getError(errors, 'date')}
         <input name="exerciseName" placeholder="Exercise name" />
-        <input name="series" placeholder="Number of series" />
-        ${getError(errors, 'series')}
+        ${getError(errors, 'exerciseName')}
+        <input name="seriesNum" placeholder="Number of series" />
+        ${getError(errors, 'seriesNum')}
         <input name="reps" placeholder="Reps" />
         ${getError(errors, 'reps')}
         <input name="weight" placeholder="Weight" />

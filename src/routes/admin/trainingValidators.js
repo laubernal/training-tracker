@@ -7,11 +7,15 @@ module.exports = {
     .trim()
     .isDate({ format: 'DD/MM/YYYY', strictMode: true })
     .withMessage('Must be DD/MM/YYYY format'),
-  requireExerciseName: check('exerciseName')
+  requireExerciseName: check('exercise.*.exerciseName')
     .trim()
     .isLength({ min: 3, max: 40 })
     .withMessage('Must be between 3 and 40 characters'),
-  requireNumber: check(['series', 'reps', 'weight'])
+  requireNumber: check([
+    'exercise.*.series.*.reps',
+    'exercise.*.series.*.seriesNum',
+    'exercise.*.series.*.weight',
+  ])
     .trim()
     .toInt()
     .isInt({ min: 1 })
