@@ -1,98 +1,32 @@
 [
   {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {},
-  {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {},
-  {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {},
-  {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {},
-  {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {},
-  {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {},
-  {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {},
-  {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {},
-  {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {},
-  {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {},
-  {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {},
-  {
-    "reps": null,
-    "weight": null
-  },
-  {
-    "name": ""
-  },
-  {}
+    "date": "22/07/2021",
+    "exercises": [
+      {
+        "name": "Dominadas",
+        "series": [
+          {
+            "seriesNum": 1,
+            "reps": 10,
+            "weight": 10
+          },
+          {
+            "seriesNum": 1,
+            "reps": 5,
+            "weight": 10
+          }
+        ]
+      },
+      {
+        "name": "Jalón",
+        "series": [
+          {
+            "seriesNum": 1,
+            "reps": 8,
+            "weight": 10
+          }
+        ]
+      }
+    ]
+  }
 ]

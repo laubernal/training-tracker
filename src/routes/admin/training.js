@@ -20,25 +20,28 @@ router.post(
   [requireDate, requireExerciseName, requireNumber],
   handleErrors(trainingTemplate),
   async (req, res) => {
-    const { date, exerciseName, seriesNum, reps, weight } = req.body;
+    const { date, exercise } = req.body;
 
-    let acc = 0;
-
-    const exName = req.body.exercise.map(exercise => {
-      if (exercise.exerciseName === 'Dominadas') {
-        exercise.series.map(serie => {
-          acc = acc + serie.reps;
-        });
-      }
+    const exercises = exercise.map(exercise => {
+      const series = exercise.series.map(serie => {
+        return new Serie(serie.seriesNum, serie.reps, serie.weight);
+      });
+      return new Exercise(exercise.exerciseName, series);
     });
 
-    console.log(acc);
-    res.send({ total: acc });
+    const training = new Training(trainingRepo.randomId, date, exercises);
 
-    // const serie = await trainingRepo.create(new Serie(seriesNum, reps, weight));
-    // const exercise = await trainingRepo.create(new Exercise(exerciseName, serie));
-    // const training = await trainingRepo.create(new Training(trainingRepo.randomId), date, exercise);
+    await trainingRepo.create(training);
+
+    res.send('Training saved');
   }
+);
+
+router.get(
+  '/admin/training/countSeries',
+  requireAuth,
+  handleErrors(trainingTemplate),
+  async (req, res) => {}
 );
 
 module.exports = router;

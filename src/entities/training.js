@@ -4,8 +4,15 @@ class Training {
     this.date = date;
     this.exercises = exercises;
   }
+
+  countSeries() {
+    let acc = 0;
+    this.exercises.map(exercise => {
+      acc = exercise.series.length + acc;
+    });
+
+    return acc;
+  }
 }
 
 module.exports = Training;
-
-// const training = await trainingRepo.create(new Training(randomID(), date, [new Exercise(name, [new Series(reps, weight)])]));
