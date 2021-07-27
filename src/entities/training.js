@@ -5,6 +5,11 @@ class Training {
     this.exercises = exercises;
   }
 
+  countExercises() {
+    console.log(this);
+    return this.exercises.length;
+  }
+
   countSeries() {
     let acc = 0;
     this.exercises.map(exercise => {
