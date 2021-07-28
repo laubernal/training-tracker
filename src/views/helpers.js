@@ -1,6 +1,5 @@
 module.exports = {
   getError: (errors, prop) => {
-    console.log(errors.mapped());
     try {
       let message = '';
       for (const property in errors.mapped()) {

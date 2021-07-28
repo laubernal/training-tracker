@@ -6,6 +6,7 @@ const Exercise = require('../../entities/exercise');
 const TrainingCollection = require('../../entities/trainingCollection');
 const trainingRepo = require('../../repositories/trainingsRepository');
 const trainingTemplate = require('../../views/admin/trainingView');
+const trainingListTemplate = require('../../views/admin/trainings/index');
 const { requireDate, requireExerciseName, requireNumber } = require('./trainingValidators');
 const { requireAuth, handleErrors } = require('./middlewares');
 
@@ -56,9 +57,9 @@ router.get('/admin/training', requireAuth, async (req, res) => {
   const trainingCollection = new TrainingCollection(collection);
 
   console.log(trainingCollection.summary());
-  res.send(JSON.stringify(trainings));
+  // res.send(JSON.stringify(trainings));
 
-  // res.send(trainingListTemplate());
+  res.send(trainingListTemplate({ trainingCollection }));
 });
 
 router.get(
